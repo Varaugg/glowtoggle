@@ -1,12 +1,11 @@
-scoreboard players enable @a glow_on
-scoreboard players enable @a glow_off
+scoreboard players enable @a glow
 
-execute as @a[scores={glow_on=1..}] run tag @s add glow_enabled
-execute as @a[scores={glow_on=1..}] run effect give @s minecraft:glowing infinite 1 true
-execute as @a[scores={glow_on=1..}] run scoreboard players set @s glow_on 0
+execute as @a[scores={glow=1..},tag=!glow_enabled] run tag @s add glow_enabled
+execute as @a[scores={glow=1..},tag=!glow_enabled] run effect give @s minecraft:glowing infinite 0 true
 
-execute as @a[scores={glow_off=1..}] run tag @s remove glow_enabled
-execute as @a[scores={glow_off=1..}] run effect clear @s minecraft:glowing
-execute as @a[scores={glow_off=1..}] run scoreboard players set @s glow_off 0
+execute as @a[scores={glow=1..},tag=glow_enabled] run tag @s remove glow_enabled
+execute as @a[scores={glow=1..},tag=glow_enabled] run effect clear @s minecraft:glowing
 
-execute as @a[tag=glow_enabled,nbt=!{ActiveEffects:[{Id:24b}]}] run effect give @s minecraft:glowing infinite 0 true
+scoreboard players set @a[scores={glow=1..}] glow 0
+
+effect give @a[tag=glow_enabled] minecraft:glowing infinite 0 true

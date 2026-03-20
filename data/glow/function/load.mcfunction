@@ -1,2 +1,2 @@
-scoreboard objectives add glow_on trigger
-scoreboard objectives add glow_off trigger
+scoreboard objectives remove glow
+scoreboard objectives add glow trigger
